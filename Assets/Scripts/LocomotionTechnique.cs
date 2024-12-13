@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Oculus.Interaction.Input;
+using UnityEngine;
 
 public class LocomotionTechnique : MonoBehaviour
 {
@@ -12,6 +13,16 @@ public class LocomotionTechnique : MonoBehaviour
     [SerializeField] private Vector3 startPos;
     [SerializeField] private Vector3 offset;
     [SerializeField] private bool isIndexTriggerDown;
+
+    //Hands
+    [SerializeField]
+    private Hand leftHand;
+    private Pose currentLeftHandPose;
+    private Vector3 leftFingerTipPosition;
+    private Hand rightHand;
+    private Pose currentRightHandPose;
+    private Vector3 rightFingerTipPosition;
+    private HandJointId handJointId = HandJointId.HandIndexTip;
 
 
     /////////////////////////////////////////////////////////
@@ -27,8 +38,15 @@ public class LocomotionTechnique : MonoBehaviour
 
     void Update()
     {
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        // Please implement your LOCOMOTION TECHNIQUE in this script :D.
+        // To Do: Implement Locomotion Technique: hand grab mover
+
+        // get fingertip positions
+        leftHand.GetJointPose(handJointId, out currentLeftHandPose);
+        rightHand.GetJointPose(handJointId, out currentRightHandPose);
+
+        leftFingerTipPosition = currentLeftHandPose.position;
+        rightFingerTipPosition = currentRightHandPose.position;
+        
         leftTriggerValue = OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, leftController); 
         rightTriggerValue = OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, rightController); 
 

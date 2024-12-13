@@ -7,7 +7,7 @@ public class DynamicFOVFilter : MonoBehaviour
     // Start is called before the first frame update
     public GameObject filter;
 
-        //VignetteModel.Settings vignetteSettings;
+    //VignetteModel.Settings vignetteSettings;
     //public PostProcessingProfile profile;
 
     public float decaySpeed = 20f; 
@@ -18,8 +18,8 @@ public class DynamicFOVFilter : MonoBehaviour
 
     Vector3 lastPosition;
     Vector3 lastOrientation;
-    
-    Rigidbody rigidbody;
+
+    new Rigidbody rigidbody;
     bool usingRigidbody;
 
     public float decayRate = -.001f;
